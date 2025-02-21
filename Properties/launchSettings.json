@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "swa_managed": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7072",
+      "launchBrowser": false
+    }
+  }
+}
