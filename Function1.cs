@@ -17,6 +17,12 @@ namespace swa_managed
         [Function("GetTitle")]
         public IActionResult Run([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequest req)
         {
+            IHeaderDictionary headers = req.Headers;
+            if (!headers.TryGetValue("x-ms-client-principal", out Microsoft.Extensions.Primitives.StringValues headerValues))
+            {
+                return new UnauthorizedResult();
+            }
+
             return new OkObjectResult("Welcome to Azure Functions!");
         }
     }
