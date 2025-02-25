@@ -15,11 +15,11 @@ namespace swa_managed
         }
 
         [Function("GetTitle")]
-        public IActionResult Run([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequest req, [FromHeader(Name = "X-MS-CLIENT-PRINCIPAL")] string principal)
+        public IActionResult Run([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequest req, [FromHeader(Name = "X-MS-CLIENT-PRINCIPAL-NAME")] string principal)
         {
             if (string.IsNullOrEmpty(principal))
             {
-                return new UnauthorizedResult();
+                return new OkObjectResult("Du har inte behörighet");
             }
 
             return new OkObjectResult("Welcome to Azure Functions!");
