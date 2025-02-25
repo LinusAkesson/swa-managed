@@ -15,10 +15,9 @@ namespace swa_managed
         }
 
         [Function("GetTitle")]
-        public IActionResult Run([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequest req)
+        public IActionResult Run([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequest req, [FromHeader(Name = "X-MS-CLIENT-PRINCIPAL")] string principal)
         {
-            IHeaderDictionary headers = req.Headers;
-            if (!headers.TryGetValue("x-ms-client-principal", out Microsoft.Extensions.Primitives.StringValues headerValues))
+            if (string.IsNullOrEmpty(principal))
             {
                 return new UnauthorizedResult();
             }
