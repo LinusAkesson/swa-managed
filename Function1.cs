@@ -15,7 +15,7 @@ namespace swa_managed
         }
 
         [Function("GetTitle")]
-        public IActionResult Run([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequest req, [FromHeader(Name = "X-MS-CLIENT-PRINCIPAL-NAME")] string principal)
+        public IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req, [FromHeader(Name = "X-MS-CLIENT-PRINCIPAL-NAME")] string principal)
         {
             if (string.IsNullOrEmpty(principal))
             {
