@@ -15,9 +15,9 @@ namespace swa_managed
         }
 
         [Function("GetTitle")]
-        public IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req)
+        public string Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req)
         {
-            return new OkObjectResult("Welcome to Azure Functions!");
+            return "SuperJuan";
         }
     }
 }
