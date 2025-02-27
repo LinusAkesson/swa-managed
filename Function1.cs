@@ -15,9 +15,10 @@ namespace swa_managed
         }
 
         [Function("GetTitle")]
-        public string Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req)
+        public IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req)
         {
-            return "SuperJuan";
+
+            return new OkObjectResult("SuperDuperJuan");
         }
     }
 }
