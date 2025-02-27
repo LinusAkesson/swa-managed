@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
@@ -17,8 +18,8 @@ namespace swa_managed
         [Function("GetTitle")]
         public IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req)
         {
-
-            return new OkObjectResult("SuperDuperJuan");
+            string bodyMessage = JsonSerializer.Serialize(new { title = "SuperDuperJuan" });
+            return new OkObjectResult(bodyMessage);
         }
     }
 }
